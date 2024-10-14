@@ -1,5 +1,6 @@
 package kennyboateng.LensLobby.exceptions;
 
+import kennyboateng.LensLobby.payloads.ErrorsResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authorization.AuthorizationDeniedException;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -36,4 +37,5 @@ public class ExceptionHandler {
     @ResponseStatus(HttpStatus.FORBIDDEN) // 403
     public ErrorsResponseDTO handleForbidden(AuthorizationDeniedException ex) {
         return new ErrorsResponseDTO("Non hai i permessi per accedere", LocalDateTime.now());
+    }
 }

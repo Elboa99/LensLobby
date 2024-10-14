@@ -1,6 +1,7 @@
 package kennyboateng.LensLobby.services;
 
 import kennyboateng.LensLobby.entities.Fotografo;
+import kennyboateng.LensLobby.exceptions.UnauthorizedException;
 import kennyboateng.LensLobby.repositories.FotografoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,11 @@ public class FotografoService {
     public Optional<Fotografo> findFotografoById(Long id) {
         return fotografoRepository.findById(id);
     }
+
+    public Fotografo loadFotografoById(Long id) throws UnauthorizedException {
+        return findFotografoById(id).orElseThrow(() -> new UnauthorizedException("Fotografo non trovato."));
+    }
+
 
     public void deleteFotografo(Long id) {
         fotografoRepository.deleteById(id);
