@@ -23,9 +23,11 @@ import java.util.List;
 
 
 @Table(name = "fotografi")
+
 public class Fotografo implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter(AccessLevel.NONE)
     private Long id;
 
     @Column(unique = true, nullable = false)
@@ -85,5 +87,6 @@ public class Fotografo implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 
 }
